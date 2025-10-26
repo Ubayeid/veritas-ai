@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Chat {
+  id                String    @id @default(cuid())
+  title             String    @default("New Chat")
+  citationPanelOpen Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  messages          Message[]
+
+  @@map("chats")
+}
+
+model Message {
+  id               String     @id @default(cuid())
+  chatId           String
+  role             String
+  content          String
+  completionTokens Int?
+  createdAt        DateTime   @default(now())
+  chat             Chat       @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  citations        Citation[]
+
+  @@map("messages")
+}
+
+model Citation {
+  id           String   @id @default(cuid())
+  messageId    String
+  title        String
+  authors      String
+  year         Int?
+  journal      String?
+  url          String?
+  // Legal citation fields
+  volume       String?
+  page         String?
+  reporter     String?
+  court        String?
+  citationType String?  // 'case', 'statute', 'regulation', 'academic'
+  message      Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@map("citations")
+}

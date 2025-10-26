@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'IBM Plex Serif', 'Georgia', 'Times New Roman', serif;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* APA citation links - clickable and styled */
+.citation-link {
+  @apply cursor-pointer text-blue-700 hover:text-blue-900 font-medium transition-colors;
+  text-decoration: none;
+  border-bottom: 1px solid #3b82f6;
+  padding-bottom: 1px;
+}
+
+.citation-link:hover {
+  @apply bg-blue-50;
+  border-bottom-color: #1d4ed8;
+}
+
+/* Academic prose styling */
+.prose {
+  @apply text-gray-100;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: none;
+}
+
+.prose h2 {
+  @apply text-2xl font-bold text-white mt-10 mb-5 pb-3;
+  font-family: var(--font-sans);
+  border-bottom: 2px solid #374151;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold text-white mt-8 mb-4;
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.prose p {
+  @apply text-gray-200 mb-5;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.prose ul,
+.prose ol {
+  @apply my-5 space-y-3;
+  padding-left: 0;
+}
+
+.prose li {
+  @apply text-gray-200 mb-3;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.prose strong {
+  @apply font-semibold text-white;
+  font-weight: 600;
+}
+
+.prose em {
+  @apply italic text-gray-300;
+}
+
+.prose code {
+  @apply bg-gray-800 px-2 py-1 rounded text-sm text-gray-200;
+  font-family: 'SF Mono', Monaco, monospace;
+  font-size: 14px;
+}
+
+/* List styling */
+.prose ul {
+  @apply list-none;
+}
+
+.prose ul > li {
+  @apply relative pl-7 mb-3;
+}
+
+.prose ul > li::before {
+  content: "•";
+  @apply absolute left-0 top-0 font-bold text-white;
+  font-size: 20px;
+  line-height: 1.75;
+}
+
+.prose ul ul {
+  @apply mt-2 mb-2;
+}
+
+.prose ul ul > li::before {
+  content: "◦";
+  font-size: 18px;
+}
+
+.prose ol {
+  @apply list-decimal pl-7;
+}
+
+.prose ol > li {
+  @apply mb-3;
+  padding-left: 0.5rem;
+}
+
+.prose li p {
+  @apply mb-2;
+}
+
+.prose h2:first-of-type {
+  @apply mt-0;
+}
+
+.prose h2 + p,
+.prose h2 + ul {
+  @apply mt-4;
+}
+
+.prose p + p {
+  @apply mt-5;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-600 pl-6 my-5 italic text-gray-300;
+  font-size: 16px;
+}
+
+/* Citation panel styling - matches prose */
+.citation-text {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.75;
+  color: #1f2937;
+}
+
+.citation-text:hover {
+  color: #1d4ed8;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Custom Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
