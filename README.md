@@ -1,4 +1,4 @@
-# ��️ VeritasAI - Truth in Legal Intelligence
+# VeritasAI - Truth in Legal Intelligence
 
 <div align="center">
 
@@ -176,12 +176,6 @@ veritas-ai/
 - **Explainable AI**: Provides reasoning for legal conclusions
 - **Multi-Document Analysis**: Processes multiple documents simultaneously
 - **Predictive Legal**: Forecasts potential case outcomes
-
----
-
-## 🎨 Screenshots
-
-*Add screenshots of your application here*
 
 ---
 
